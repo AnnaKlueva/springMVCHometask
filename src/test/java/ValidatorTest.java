@@ -15,9 +15,14 @@ import javax.validation.ValidatorFactory;
  */
 public class ValidatorTest {
 
-    @Test(groups = "unitTest", enabled = false)
+    @Test(groups = "unitTest")
     public  void validatorTest() {
-       /* Dog dog = new Dog("", new Date(2019, 11, 6), -25, -35);
+        Dog dog = Dog.builder()
+                .name("")
+                .dateOfBirth(new Date(2019, 11, 6))
+                .height(-25)
+                .weight(-35)
+                .build();
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -37,6 +42,6 @@ public class ValidatorTest {
         assertEquals("The height must be more then 0", message);
 
         message = validator.validateProperty(dog, "weight").iterator().next().getMessage();
-        assertEquals("The weight must be more then 0", message);*/
+        assertEquals("The weight must be more then 0", message);
     }
 }

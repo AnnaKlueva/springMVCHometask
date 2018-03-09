@@ -7,6 +7,13 @@ import java.io.IOException;
  * Created by akliuieva on 2/10/18.
  */
 public class TestUtil {
+    //TODO: Create java to json converter
+    public static String convertObjectToJsonString(Object object) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return mapper.writeValueAsString(object);
+    }
+
 
     public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();

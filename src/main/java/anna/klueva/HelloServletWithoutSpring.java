@@ -1,5 +1,8 @@
 package anna.klueva;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -27,11 +30,11 @@ public class HelloServletWithoutSpring extends HttpServlet {
             response.getWriter().println(dog);
         }
 
-        /*ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
         //Add verification for OutOfBoundException
         String result = mapper.writeValueAsString(getDogCollection());
-        response.getWriter().println(result);*/
+        response.getWriter().println(result);
     }
 
     private List<Dog> getDogCollection() {

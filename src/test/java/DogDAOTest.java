@@ -1,13 +1,18 @@
 
 import anna.klueva.Dog;
 import anna.klueva.DogController;
+import anna.klueva.RestErrorHandler;
 import anna.klueva.dao.DogDAO;
+import org.springframework.context.MessageSource;
+import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.testng.annotations.Test;
 
 import java.nio.charset.Charset;
@@ -15,6 +20,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.nullValue;
@@ -41,9 +47,15 @@ public class DogDAOTest {
      * https://www.petrikainulainen.net/programming/spring-framework/unit-testing-of-spring-mvc-controllers-rest-api
      * */
 
-    @Test(groups = "restApi", enabled = false)
+    @Test(groups = "restApi")
     public void verifyGetByIdRequestOkResponse() throws Exception {
-        Optional<Dog> expectedDog = Optional.of(new Dog());
+        Dog dog = Dog.builder()
+                .name("Jack")
+                .dateOfBirth(new Date())
+                .height(10)
+                .weight(5)
+                .build();
+        Optional<Dog> expectedDog = Optional.of(dog);
 
         DogDAO mockRepository = mock(DogDAO.class);
         when(mockRepository.findById(1)).thenReturn(expectedDog);
@@ -52,7 +64,7 @@ public class DogDAOTest {
 
         MockMvc mockMvc = standaloneSetup(controller).build();
 
-        ResultActions result = mockMvc.perform(get("/dog/1"))
+        mockMvc.perform(get("/dog/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andDo(print())
@@ -63,30 +75,32 @@ public class DogDAOTest {
                 .andExpect(jsonPath("$.dateOfBirth", is(expectedDog.get().getDateOfBirth().getTime())));
 
         verify(mockRepository, times(1)).findById(1);
-        verifyNoMoreInteractions(mockMvc);
+        verifyNoMoreInteractions(mockRepository);
     }
 
-    @Test(groups = "restApi", enabled = false)
+    @Test(groups = "restApi")
     public void verifyGetByIdRequestNotFoundEntry_ShouldReturnHttpStatusCode404() throws Exception {
         DogDAO mockRepository = mock(DogDAO.class);
-        when(mockRepository.findById(100)).thenReturn(null);
+        when(mockRepository.findById(100)).thenReturn(Optional.empty());
 
         DogController controller = new DogController(mockRepository);
-
         MockMvc mockMvc = standaloneSetup(controller).build();
 
         ResultActions result = mockMvc.perform(get("/dog/100"))
+                .andDo(print())
                 .andExpect(status().isNotFound());
     }
 
-    @Test(groups = "restApi", enabled = false)
+    @Test(groups = "restApi")
     public void verifyGetAllRequest() throws Exception {
-        /*//TODO: create DogBuilder class
-        Dog firstDog = new Dog();
-        Dog secondDog = new Dog("Second dog", new Date(), 20,20);
-                *//*Dog.builder()
+        Dog firstDog = Dog.builder()
+                .name("First dog")
+                .dateOfBirth(new Date())
+                .build();
+        Dog secondDog = Dog.builder()
                 .name("Second dog")
-                .build();*//*//new Dog("Second dog", new Date(), 20,20);
+                .dateOfBirth(new Date())
+                .build();
         Iterable<Dog> expectedList = Arrays.asList(firstDog, secondDog);
 
         DogDAO mockRepository = mock(DogDAO.class);
@@ -112,7 +126,7 @@ public class DogDAOTest {
                 .andExpect(jsonPath("$[1].weight", is(secondDog.getWeight())));
 
         verify(mockRepository, times(1)).findAll();
-        verifyNoMoreInteractions(mockRepository);*/
+        verifyNoMoreInteractions(mockRepository);
     }
 
     //TODO: add verifications for valid object
@@ -122,26 +136,59 @@ public class DogDAOTest {
      date of birth - must be before NOW, optional
      height, weight - must be greater than 0, not null
      */
-    @Test(groups = "restApi", enabled = false)
-    public void verifyAddDogRequest() throws Exception {
-        Dog expectedDog = new Dog();
+    @Test(groups = "restApi"/*, enabled = false*/)
+    public void verifyAddDogRequest_200Ok() throws Exception {
+        Dog expectedDog = Dog.builder()
+                .name("Correct dog")
+                .dateOfBirth(new Date())
+                .height(25)
+                .weight(10)
+                .build();
 
         DogDAO mockRepository = mock(DogDAO.class);
-        when(mockRepository.save(expectedDog));
+        when(mockRepository.save(expectedDog)).thenReturn(expectedDog);
 
         DogController controller = new DogController(mockRepository);
 
         MockMvc mockMvc = standaloneSetup(controller).build();
 
-        ResultActions result = mockMvc.perform(post("")
+        ResultActions result = mockMvc.perform(post("/dog/")
                 .contentType(APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(expectedDog)))
-                .andDo(print());
-
-
-
-                /*.andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(status().isOk())
                 .andExpect(content().contentType
-                        (MediaType.APPLICATION_JSON_UTF8_VALUE))*/;
+                        (MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id", is(expectedDog.getId())))
+                .andExpect(jsonPath("$.name", is(expectedDog.getName())))
+                .andExpect(jsonPath("$.height", is(expectedDog.getHeight())))
+                .andExpect(jsonPath("$.weight", is(expectedDog.getWeight())))
+                .andExpect(jsonPath("$.dateOfBirth", is(expectedDog.getDateOfBirth().getTime())));
+    }
+
+    @Test(groups = "restApi", enabled = false)
+    public void verifyAddDogRequest_400Badrequest() throws Exception {
+        Dog expectedDog = Dog.builder()
+                .name("Correct dog")
+                .dateOfBirth(new Date())
+                .height(-25)
+                .weight(10)
+                .build();
+
+        DogDAO mockRepository = mock(DogDAO.class);
+
+        DogController controller = new DogController(mockRepository);
+
+        MockMvc mockMvc = standaloneSetup(controller)
+                .setControllerAdvice(new RestErrorHandler(mock(MessageSource.class)))
+                .build();
+
+        ResultActions result = mockMvc.perform(post("/dog/")
+                .contentType(APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(expectedDog)))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.fieldErrors[*].message", containsString("The height must be more then 0")));
+        verifyZeroInteractions(mockRepository);
     }
 }

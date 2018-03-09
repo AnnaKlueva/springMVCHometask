@@ -28,7 +28,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected WebApplicationContext createRootApplicationContext() {
         WebApplicationContext context = super.createRootApplicationContext();
-        ((ConfigurableEnvironment)context.getEnvironment()).setActiveProfiles("dev");
+        ((ConfigurableEnvironment)context.getEnvironment()).setDefaultProfiles("dev");
         return context;
     }
 }

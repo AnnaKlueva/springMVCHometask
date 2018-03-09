@@ -2,6 +2,7 @@ package anna.klueva;
 
 import anna.klueva.dao.DogDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -34,21 +35,23 @@ public class DogController {
         return dogDAO.findAll();
     }
 
-    @PostMapping(consumes = "application/json", produces = "application/json")
-    public Dog createNewDog(@RequestBody @Valid Dog dog, BindingResult bindingResult) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Dog createNewDog(@RequestBody @Valid Dog dog) {
         return dogDAO.save(dog);
     }
 
     @PutMapping(value="/{dogId}", consumes = "application/json", produces = "application/json")
-    public void updateDogById(@PathVariable int dogId, @RequestBody @Valid Dog dog, BindingResult bindingResult) throws SQLException {
-       if (bindingResult.hasErrors()) {
+    public Dog updateDogById(@PathVariable int dogId, @RequestBody @Valid Dog dog/*, BindingResult bindingResult*/) throws SQLException {
+       /*if (bindingResult.hasErrors()) {
            throw new RuntimeException("Invalid input object");
-       }
+       }*/
+       Dog result = new Dog();
        if(dogDAO.existsById(dogId)){
            Dog foundDog = dogDAO.findById(dogId).get();
            setDataToDog(dog, foundDog);
-           dogDAO.save(foundDog);
+           result = dogDAO.save(foundDog);
        }
+       return result;
     }
 
     @DeleteMapping(value="/{dogId}")

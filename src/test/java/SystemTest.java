@@ -1,10 +1,12 @@
 import anna.klueva.Dog;
 import anna.klueva.util.RootConfig;
+import anna.klueva.util.WebConfig;
 import org.apache.http.HttpStatus;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -19,10 +21,12 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by akliuieva on 1/5/18.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+
+
+//Need .war with profile "test"
 @ContextConfiguration(classes={RootConfig.class})
 @ActiveProfiles("test")
-public class SystemTest {
+public class SystemTest extends AbstractTestNGSpringContextTests {
     public static final String PATH_TO_JBOSS_WAR = "/Users/akliuieva/Desktop/WebAppProject/WebApp/src/test/resources/wildfly-11.0.0.Final/bin/standalone.sh";
     public static final String BASE_URI = "http://localhost:8080/WebApp-1.1/dog/1";
 
@@ -30,7 +34,7 @@ public class SystemTest {
     public void verifyGetByIdRequest() throws Exception {
         //TODO: move running JBOSS deployment to Jenkins level
         //Run start jboss script
-        Runtime.getRuntime().exec(PATH_TO_JBOSS_WAR);
+        //Runtime.getRuntime().exec(PATH_TO_JBOSS_WAR);
         //TODO: add verification that JBOSS is up and running
 
          Dog response = given().baseUri(BASE_URI)
