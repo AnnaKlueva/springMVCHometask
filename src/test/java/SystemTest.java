@@ -1,8 +1,10 @@
 import anna.klueva.Dog;
+import anna.klueva.dao.DogDAO;
 import anna.klueva.util.RootConfig;
 import anna.klueva.util.WebConfig;
 import org.apache.http.HttpStatus;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,10 +27,13 @@ import static org.testng.Assert.assertTrue;
 
 //Need .war with profile "test"
 @ContextConfiguration(classes={RootConfig.class})
-@ActiveProfiles("test")
+@ActiveProfiles("dev")
 public class SystemTest extends AbstractTestNGSpringContextTests {
     public static final String PATH_TO_JBOSS_WAR = "/Users/akliuieva/Desktop/WebAppProject/WebApp/src/test/resources/wildfly-11.0.0.Final/bin/standalone.sh";
     public static final String BASE_URI = "http://localhost:8080/WebApp-1.1/dog/1";
+
+    @Autowired
+    DogDAO dogDAO;
 
     @Test(groups = "systemTest", enabled = false)
     public void verifyGetByIdRequest() throws Exception {

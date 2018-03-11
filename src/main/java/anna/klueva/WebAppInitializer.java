@@ -7,6 +7,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{RootConfig.class};
@@ -28,7 +29,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected WebApplicationContext createRootApplicationContext() {
         WebApplicationContext context = super.createRootApplicationContext();
-        ((ConfigurableEnvironment)context.getEnvironment()).setDefaultProfiles("dev");
+        ((ConfigurableEnvironment)context.getEnvironment()).setDefaultProfiles(
+                System.getProperty("spring.profiles.active"));
         return context;
     }
 }
