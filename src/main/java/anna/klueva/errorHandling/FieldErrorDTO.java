@@ -1,4 +1,4 @@
-package anna.klueva;
+package anna.klueva.errorHandling;
 
 /**
  * Created by akliuieva on 2/15/18.

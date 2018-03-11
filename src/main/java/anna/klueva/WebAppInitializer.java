@@ -1,7 +1,7 @@
 package anna.klueva;
 
-import anna.klueva.util.RootConfig;
-import anna.klueva.util.WebConfig;
+import anna.klueva.config.RootConfig;
+import anna.klueva.config.WebConfig;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -29,8 +29,13 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected WebApplicationContext createRootApplicationContext() {
         WebApplicationContext context = super.createRootApplicationContext();
-        ((ConfigurableEnvironment)context.getEnvironment()).setDefaultProfiles(
-                System.getProperty("spring.profiles.active"));
+        if(System.getProperty("spring.profiles.active") == null){
+            ((ConfigurableEnvironment)context.getEnvironment()).setDefaultProfiles("dev");
+        }
+        else{
+            ((ConfigurableEnvironment)context.getEnvironment()).setDefaultProfiles(
+                    System.getProperty("spring.profiles.active"));
+        }
         return context;
     }
 }

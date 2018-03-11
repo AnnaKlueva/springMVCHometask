@@ -141,9 +141,9 @@
 2018-01-23 14:42:27,159 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 12) Initializing Spring root WebApplicationContext
 2018-01-23 14:42:27,159 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 12) Root WebApplicationContext: initialization started
 2018-01-23 14:42:27,162 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Refreshing Root WebApplicationContext: startup date [Tue Jan 23 14:42:27 EET 2018]; root of context hierarchy
-2018-01-23 14:42:27,219 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2018-01-23 14:42:27,219 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2018-01-23 14:42:28,086 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 12) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2018-01-23 14:42:28,158 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 12) Bean 'rootConfig' of type [anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$c458ac36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 14:42:28,158 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 12) Bean 'rootConfig' of type [anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$c458ac36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2018-01-23 14:42:28,269 INFO  [org.springframework.jdbc.datasource.DriverManagerDataSource] (ServerService Thread Pool -- 12) Loaded JDBC driver: org.hsqldb.jdbc.JDBCDriver
 2018-01-23 14:42:28,367 ERROR [stderr] (ServerService Thread Pool -- 12) java.io.FileNotFoundException: resources/inmemJPA.properties (No such file or directory)
 2018-01-23 14:42:28,368 ERROR [stderr] (ServerService Thread Pool -- 12) 	at java.io.FileInputStream.open0(Native Method)
@@ -151,12 +151,12 @@
 2018-01-23 14:42:28,369 ERROR [stderr] (ServerService Thread Pool -- 12) 	at java.io.FileInputStream.<init>(FileInputStream.java:138)
 2018-01-23 14:42:28,369 ERROR [stderr] (ServerService Thread Pool -- 12) 	at java.io.FileInputStream.<init>(FileInputStream.java:93)
 2018-01-23 14:42:28,369 ERROR [stderr] (ServerService Thread Pool -- 12) 	at java.io.FileReader.<init>(FileReader.java:58)
-2018-01-23 14:42:28,369 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.util.RootConfig.additionalProperties(RootConfig.java:66)
-2018-01-23 14:42:28,369 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$c458ac36.CGLIB$additionalProperties$0(<generated>)
-2018-01-23 14:42:28,370 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$c458ac36$$FastClassBySpringCGLIB$$bbd268c6.invoke(<generated>)
+2018-01-23 14:42:28,369 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.config.RootConfig.additionalProperties(RootConfig.java:66)
+2018-01-23 14:42:28,369 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$c458ac36.CGLIB$additionalProperties$0(<generated>)
+2018-01-23 14:42:28,370 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$c458ac36$$FastClassBySpringCGLIB$$bbd268c6.invoke(<generated>)
 2018-01-23 14:42:28,370 ERROR [stderr] (ServerService Thread Pool -- 12) 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
 2018-01-23 14:42:28,370 ERROR [stderr] (ServerService Thread Pool -- 12) 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:361)
-2018-01-23 14:42:28,370 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$c458ac36.additionalProperties(<generated>)
+2018-01-23 14:42:28,370 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$c458ac36.additionalProperties(<generated>)
 2018-01-23 14:42:28,371 ERROR [stderr] (ServerService Thread Pool -- 12) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 2018-01-23 14:42:28,371 ERROR [stderr] (ServerService Thread Pool -- 12) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 2018-01-23 14:42:28,371 ERROR [stderr] (ServerService Thread Pool -- 12) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -301,9 +301,9 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 2018-01-23 14:48:49,679 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 12) Initializing Spring FrameworkServlet 'dispatcher'
 2018-01-23 14:48:49,680 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 12) FrameworkServlet 'dispatcher': initialization started
 2018-01-23 14:48:49,684 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Jan 23 14:48:49 EET 2018]; parent: Root WebApplicationContext
-2018-01-23 14:48:49,685 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2018-01-23 14:48:49,685 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2018-01-23 14:48:50,117 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 12) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2018-01-23 14:48:50,139 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 12) Bean 'rootConfig' of type [anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$c458ac36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 14:48:50,139 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 12) Bean 'rootConfig' of type [anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$c458ac36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2018-01-23 14:48:50,176 INFO  [org.springframework.jdbc.datasource.DriverManagerDataSource] (ServerService Thread Pool -- 12) Loaded JDBC driver: org.hsqldb.jdbc.JDBCDriver
 2018-01-23 14:48:50,220 ERROR [stderr] (ServerService Thread Pool -- 12) java.io.FileNotFoundException: resources/inmemJPA.properties (No such file or directory)
 2018-01-23 14:48:50,221 ERROR [stderr] (ServerService Thread Pool -- 12) 	at java.io.FileInputStream.open0(Native Method)
@@ -311,12 +311,12 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 2018-01-23 14:48:50,222 ERROR [stderr] (ServerService Thread Pool -- 12) 	at java.io.FileInputStream.<init>(FileInputStream.java:138)
 2018-01-23 14:48:50,222 ERROR [stderr] (ServerService Thread Pool -- 12) 	at java.io.FileInputStream.<init>(FileInputStream.java:93)
 2018-01-23 14:48:50,222 ERROR [stderr] (ServerService Thread Pool -- 12) 	at java.io.FileReader.<init>(FileReader.java:58)
-2018-01-23 14:48:50,224 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.util.RootConfig.additionalProperties(RootConfig.java:66)
-2018-01-23 14:48:50,224 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$c458ac36.CGLIB$additionalProperties$0(<generated>)
-2018-01-23 14:48:50,224 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$c458ac36$$FastClassBySpringCGLIB$$bbd268c6.invoke(<generated>)
+2018-01-23 14:48:50,224 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.config.RootConfig.additionalProperties(RootConfig.java:66)
+2018-01-23 14:48:50,224 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$c458ac36.CGLIB$additionalProperties$0(<generated>)
+2018-01-23 14:48:50,224 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$c458ac36$$FastClassBySpringCGLIB$$bbd268c6.invoke(<generated>)
 2018-01-23 14:48:50,227 ERROR [stderr] (ServerService Thread Pool -- 12) 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
 2018-01-23 14:48:50,228 ERROR [stderr] (ServerService Thread Pool -- 12) 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:361)
-2018-01-23 14:48:50,229 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$c458ac36.additionalProperties(<generated>)
+2018-01-23 14:48:50,229 ERROR [stderr] (ServerService Thread Pool -- 12) 	at anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$c458ac36.additionalProperties(<generated>)
 2018-01-23 14:48:50,229 ERROR [stderr] (ServerService Thread Pool -- 12) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 2018-01-23 14:48:50,229 ERROR [stderr] (ServerService Thread Pool -- 12) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 2018-01-23 14:48:50,231 ERROR [stderr] (ServerService Thread Pool -- 12) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -587,9 +587,9 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 2018-01-23 14:51:35,991 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 19) Initializing Spring root WebApplicationContext
 2018-01-23 14:51:35,992 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 19) Root WebApplicationContext: initialization started
 2018-01-23 14:51:35,996 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 19) Refreshing Root WebApplicationContext: startup date [Tue Jan 23 14:51:35 EET 2018]; root of context hierarchy
-2018-01-23 14:51:36,097 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 19) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2018-01-23 14:51:36,097 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 19) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2018-01-23 14:51:37,086 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 19) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2018-01-23 14:51:37,179 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 19) Bean 'rootConfig' of type [anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$31204cf5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 14:51:37,179 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 19) Bean 'rootConfig' of type [anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$31204cf5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2018-01-23 14:51:37,314 INFO  [org.springframework.jdbc.datasource.DriverManagerDataSource] (ServerService Thread Pool -- 19) Loaded JDBC driver: org.hsqldb.jdbc.JDBCDriver
 2018-01-23 14:52:23,846 INFO  [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] (ServerService Thread Pool -- 19) Building JPA container EntityManagerFactory for persistence unit 'default'
 2018-01-23 14:52:23,880 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 19) HHH000204: Processing PersistenceUnitInfo [
@@ -678,9 +678,9 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 2018-01-23 14:52:26,842 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 19) Initializing Spring FrameworkServlet 'dispatcher'
 2018-01-23 14:52:26,842 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 19) FrameworkServlet 'dispatcher': initialization started
 2018-01-23 14:52:26,847 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 19) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Jan 23 14:52:26 EET 2018]; parent: Root WebApplicationContext
-2018-01-23 14:52:26,849 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 19) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2018-01-23 14:52:26,849 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 19) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2018-01-23 14:52:27,039 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 19) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2018-01-23 14:52:27,062 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 19) Bean 'rootConfig' of type [anna.klueva.util.RootConfig$$EnhancerBySpringCGLIB$$31204cf5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 14:52:27,062 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 19) Bean 'rootConfig' of type [anna.klueva.config.RootConfig$$EnhancerBySpringCGLIB$$31204cf5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2018-01-23 14:52:27,093 INFO  [org.springframework.jdbc.datasource.DriverManagerDataSource] (ServerService Thread Pool -- 19) Loaded JDBC driver: org.hsqldb.jdbc.JDBCDriver
 2018-01-23 14:52:36,140 INFO  [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] (ServerService Thread Pool -- 19) Building JPA container EntityManagerFactory for persistence unit 'default'
 2018-01-23 14:52:36,149 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 19) HHH000204: Processing PersistenceUnitInfo [

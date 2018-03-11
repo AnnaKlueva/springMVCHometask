@@ -1,18 +1,12 @@
 
 import anna.klueva.Dog;
 import anna.klueva.DogController;
-import anna.klueva.RestErrorHandler;
+import anna.klueva.errorHandling.RestErrorHandler;
 import anna.klueva.dao.DogDAO;
 import org.springframework.context.MessageSource;
-import org.springframework.core.MethodParameter;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.testng.annotations.Test;
 
 import java.nio.charset.Charset;

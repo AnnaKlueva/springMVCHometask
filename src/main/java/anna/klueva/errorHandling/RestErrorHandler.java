@@ -1,4 +1,4 @@
-package anna.klueva;
+package anna.klueva.errorHandling;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

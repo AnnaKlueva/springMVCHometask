@@ -281,13 +281,13 @@ INSERT INTO DOGTABLE VALUES (1,'RockStar','1992-11-10',65,45),(2,'Firsty','2002-
 2018-01-09 17:47:07,328 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 14) Initializing Spring root WebApplicationContext
 2018-01-09 17:47:07,330 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 14) Root WebApplicationContext: initialization started
 2018-01-09 17:47:07,356 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Refreshing Root WebApplicationContext: startup date [Tue Jan 09 17:47:07 EET 2018]; root of context hierarchy
-2018-01-09 17:47:07,703 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2018-01-09 17:47:07,703 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2018-01-09 17:47:09,104 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 14) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 17:47:09,447 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 14) Root WebApplicationContext: initialization completed in 2116 ms
 2018-01-09 17:47:09,525 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 14) Initializing Spring FrameworkServlet 'dispatcher'
 2018-01-09 17:47:09,525 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 14) FrameworkServlet 'dispatcher': initialization started
 2018-01-09 17:47:09,530 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Jan 09 17:47:09 EET 2018]; parent: Root WebApplicationContext
-2018-01-09 17:47:09,533 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2018-01-09 17:47:09,533 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2018-01-09 17:47:09,954 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 14) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 17:47:10,724 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 14) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2018-01-09 17:47:10,727 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 14) Mapped "{[/dog/allDogs],methods=[GET]}" onto public java.util.Collection<anna.klueva.Dog> anna.klueva.DogController.getAllDogs() throws java.sql.SQLException
@@ -353,7 +353,7 @@ INSERT INTO DOGTABLE VALUES (1,'RockStar','1992-11-10',65,45),(2,'Firsty','2002-
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 Caused by: java.lang.ExceptionInInitializerError
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:58)
 	at anna.klueva.DogController.getDogById(DogController.java:24)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -371,7 +371,7 @@ Caused by: java.lang.ExceptionInInitializerError
 Caused by: javax.persistence.PersistenceException: Unable to build entity manager factory
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:66)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:27)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:27)
 	... 58 more
 Caused by: org.hibernate.service.spi.ServiceException: Specified JDBC Driver org.hibernate.dialect.HSQLDialect could not be loaded
 	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.loadDriverIfPossible(DriverManagerConnectionProviderImpl.java:166)
@@ -402,7 +402,7 @@ Caused by: java.lang.ClassCastException: org.hibernate.dialect.HSQLDialect canno
 	... 81 more
 
 2018-01-09 17:47:46,635 WARN  [org.springframework.web.servlet.PageNotFound] (default task-17) Request method 'GET' not supported
-2018-01-09 17:47:47,719 ERROR [io.undertow.request] (default task-18) UT005023: Exception handling request to /WebApp-1.1/dog/allDogs: org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: Could not initialize class anna.klueva.util.HibernateUtil
+2018-01-09 17:47:47,719 ERROR [io.undertow.request] (default task-18) UT005023: Exception handling request to /WebApp-1.1/dog/allDogs: org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: Could not initialize class anna.klueva.config.HibernateUtil
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:982)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
@@ -449,7 +449,7 @@ Caused by: java.lang.ClassCastException: org.hibernate.dialect.HSQLDialect canno
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-Caused by: java.lang.NoClassDefFoundError: Could not initialize class anna.klueva.util.HibernateUtil
+Caused by: java.lang.NoClassDefFoundError: Could not initialize class anna.klueva.config.HibernateUtil
 	at anna.klueva.dao.DogDAOImpl.getAllDogs(DogDAOImpl.java:75)
 	at anna.klueva.DogController.getAllDogs(DogController.java:29)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -465,7 +465,7 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class anna.kluev
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
 	... 45 more
 
-2018-01-09 17:47:48,334 ERROR [io.undertow.request] (default task-19) UT005023: Exception handling request to /WebApp-1.1/dog/allDogs: org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: Could not initialize class anna.klueva.util.HibernateUtil
+2018-01-09 17:47:48,334 ERROR [io.undertow.request] (default task-19) UT005023: Exception handling request to /WebApp-1.1/dog/allDogs: org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: Could not initialize class anna.klueva.config.HibernateUtil
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:982)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
@@ -512,7 +512,7 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class anna.kluev
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-Caused by: java.lang.NoClassDefFoundError: Could not initialize class anna.klueva.util.HibernateUtil
+Caused by: java.lang.NoClassDefFoundError: Could not initialize class anna.klueva.config.HibernateUtil
 	at anna.klueva.dao.DogDAOImpl.getAllDogs(DogDAOImpl.java:75)
 	at anna.klueva.DogController.getAllDogs(DogController.java:29)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -835,13 +835,13 @@ INSERT INTO DOGTABLE VALUES (1,'RockStar','1992-11-10',65,45),(2,'Firsty','2002-
 2018-01-09 17:55:44,801 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 7) Initializing Spring root WebApplicationContext
 2018-01-09 17:55:44,802 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 7) Root WebApplicationContext: initialization started
 2018-01-09 17:55:44,823 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 7) Refreshing Root WebApplicationContext: startup date [Tue Jan 09 17:55:44 EET 2018]; root of context hierarchy
-2018-01-09 17:55:44,895 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 7) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2018-01-09 17:55:44,895 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 7) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2018-01-09 17:55:45,629 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 7) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 17:55:45,788 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 7) Root WebApplicationContext: initialization completed in 986 ms
 2018-01-09 17:55:45,822 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 7) Initializing Spring FrameworkServlet 'dispatcher'
 2018-01-09 17:55:45,824 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 7) FrameworkServlet 'dispatcher': initialization started
 2018-01-09 17:55:45,830 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 7) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Jan 09 17:55:45 EET 2018]; parent: Root WebApplicationContext
-2018-01-09 17:55:45,831 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 7) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2018-01-09 17:55:45,831 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 7) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2018-01-09 17:55:46,100 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 7) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 17:55:46,442 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 7) Mapped "{[/dog/allDogs],methods=[GET]}" onto public java.util.Collection<anna.klueva.Dog> anna.klueva.DogController.getAllDogs() throws java.sql.SQLException
 2018-01-09 17:55:46,443 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 7) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
@@ -907,7 +907,7 @@ INSERT INTO DOGTABLE VALUES (1,'RockStar','1992-11-10',65,45),(2,'Firsty','2002-
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 Caused by: java.lang.ExceptionInInitializerError
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:58)
 	at anna.klueva.DogController.getDogById(DogController.java:24)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -926,7 +926,7 @@ Caused by: javax.persistence.PersistenceException: Unable to build entity manage
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:66)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:29)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:29)
 	... 58 more
 Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264)
@@ -1260,13 +1260,13 @@ INSERT INTO DOGTABLE VALUES (1,'RockStar','1992-11-10',65,45),(2,'Firsty','2002-
 2018-01-09 18:07:31,780 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 15) Initializing Spring root WebApplicationContext
 2018-01-09 18:07:31,781 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 15) Root WebApplicationContext: initialization started
 2018-01-09 18:07:31,815 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 15) Refreshing Root WebApplicationContext: startup date [Tue Jan 09 18:07:31 EET 2018]; root of context hierarchy
-2018-01-09 18:07:31,904 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 15) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2018-01-09 18:07:31,904 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 15) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2018-01-09 18:07:32,436 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 15) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 18:07:32,594 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 15) Root WebApplicationContext: initialization completed in 809 ms
 2018-01-09 18:07:32,642 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 15) Initializing Spring FrameworkServlet 'dispatcher'
 2018-01-09 18:07:32,643 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 15) FrameworkServlet 'dispatcher': initialization started
 2018-01-09 18:07:32,675 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 15) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Jan 09 18:07:32 EET 2018]; parent: Root WebApplicationContext
-2018-01-09 18:07:32,677 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 15) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2018-01-09 18:07:32,677 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 15) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2018-01-09 18:07:32,970 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 15) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 18:07:33,277 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 15) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2018-01-09 18:07:33,280 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 15) Mapped "{[/dog/allDogs],methods=[GET]}" onto public java.util.Collection<anna.klueva.Dog> anna.klueva.DogController.getAllDogs() throws java.sql.SQLException
@@ -1306,7 +1306,7 @@ INSERT INTO DOGTABLE VALUES (1,'RockStar','1992-11-10',65,45),(2,'Firsty','2002-
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:29)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:29)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:58)
 	at anna.klueva.DogController.getDogById(DogController.java:24)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -1876,13 +1876,13 @@ INSERT INTO DOGTABLE VALUES (1,'RockStar','1992-11-10',65,45),(2,'Firsty','2002-
 2018-01-09 20:13:47,381 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 21) Initializing Spring root WebApplicationContext
 2018-01-09 20:13:47,381 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 21) Root WebApplicationContext: initialization started
 2018-01-09 20:13:47,402 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 21) Refreshing Root WebApplicationContext: startup date [Tue Jan 09 20:13:47 EET 2018]; root of context hierarchy
-2018-01-09 20:13:47,500 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 21) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2018-01-09 20:13:47,500 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 21) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2018-01-09 20:13:47,837 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 21) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 20:13:47,960 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 21) Root WebApplicationContext: initialization completed in 578 ms
 2018-01-09 20:13:48,002 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 21) Initializing Spring FrameworkServlet 'dispatcher'
 2018-01-09 20:13:48,003 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 21) FrameworkServlet 'dispatcher': initialization started
 2018-01-09 20:13:48,006 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 21) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Jan 09 20:13:48 EET 2018]; parent: Root WebApplicationContext
-2018-01-09 20:13:48,008 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 21) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2018-01-09 20:13:48,008 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 21) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2018-01-09 20:13:48,239 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 21) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 20:13:48,549 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 21) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2018-01-09 20:13:48,550 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 21) Mapped "{[/dog/allDogs],methods=[GET]}" onto public java.util.Collection<anna.klueva.Dog> anna.klueva.DogController.getAllDogs() throws java.sql.SQLException
@@ -2226,13 +2226,13 @@ INSERT INTO DOGTABLE VALUES (1,'RockStar','1992-11-10',65,45),(2,'Firsty','2002-
 2018-01-09 21:46:39,850 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 6) Initializing Spring root WebApplicationContext
 2018-01-09 21:46:39,851 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 6) Root WebApplicationContext: initialization started
 2018-01-09 21:46:39,866 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Refreshing Root WebApplicationContext: startup date [Tue Jan 09 21:46:39 EET 2018]; root of context hierarchy
-2018-01-09 21:46:39,923 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2018-01-09 21:46:39,923 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2018-01-09 21:46:40,228 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 6) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 21:46:40,312 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 6) Root WebApplicationContext: initialization completed in 461 ms
 2018-01-09 21:46:40,328 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 6) Initializing Spring FrameworkServlet 'dispatcher'
 2018-01-09 21:46:40,328 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 6) FrameworkServlet 'dispatcher': initialization started
 2018-01-09 21:46:40,332 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Jan 09 21:46:40 EET 2018]; parent: Root WebApplicationContext
-2018-01-09 21:46:40,332 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2018-01-09 21:46:40,332 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2018-01-09 21:46:40,469 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 6) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2018-01-09 21:46:40,813 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 6) Mapped "{[/dog],methods=[POST]}" onto public void anna.klueva.DogController.createNewDog(anna.klueva.Dog,org.springframework.validation.BindingResult) throws java.sql.SQLException
 2018-01-09 21:46:40,814 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 6) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException

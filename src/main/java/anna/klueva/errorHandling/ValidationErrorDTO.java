@@ -1,4 +1,4 @@
-package anna.klueva;
+package anna.klueva.errorHandling;
 
 import java.util.ArrayList;
 import java.util.List;

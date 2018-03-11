@@ -1356,13 +1356,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 17:11:50,655 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 6) Initializing Spring root WebApplicationContext
 2017-12-19 17:11:50,655 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 6) Root WebApplicationContext: initialization started
 2017-12-19 17:11:50,667 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 17:11:50 EET 2017]; root of context hierarchy
-2017-12-19 17:11:50,718 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 17:11:50,718 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 17:11:51,022 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 6) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 17:11:51,311 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 6) Root WebApplicationContext: initialization completed in 656 ms
 2017-12-19 17:11:51,459 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 6) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 17:11:51,460 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 6) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 17:11:51,470 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 17:11:51 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 17:11:51,473 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 17:11:51,473 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 6) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 17:11:51,899 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 6) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 17:11:52,190 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 6) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 17:11:52,191 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 6) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()
@@ -1429,7 +1429,7 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 Caused by: java.lang.ExceptionInInitializerError
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:34)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:34)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -1450,7 +1450,7 @@ Caused by: javax.persistence.PersistenceException: [PersistenceUnit: examplePU] 
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	... 58 more
 Caused by: java.lang.UnsupportedOperationException: The application must supply JDBC connections
 	at org.hibernate.engine.jdbc.connections.internal.UserSuppliedConnectionProviderImpl.getConnection(UserSuppliedConnectionProviderImpl.java:44)
@@ -2120,13 +2120,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 17:39:37,529 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 11) Initializing Spring root WebApplicationContext
 2017-12-19 17:39:37,530 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 11) Root WebApplicationContext: initialization started
 2017-12-19 17:39:37,554 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 17:39:37 EET 2017]; root of context hierarchy
-2017-12-19 17:39:37,632 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 17:39:37,632 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 17:39:38,008 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 11) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 17:39:38,107 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 11) Root WebApplicationContext: initialization completed in 577 ms
 2017-12-19 17:39:38,141 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 11) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 17:39:38,141 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 11) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 17:39:38,144 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 17:39:38 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 17:39:38,145 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 17:39:38,145 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 17:39:38,391 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 11) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 17:39:38,747 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 11) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 17:39:38,748 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 11) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()
@@ -2164,7 +2164,7 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2259,7 +2259,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement:  required: (
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2358,7 +2358,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2449,7 +2449,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: ID_DOG
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2540,7 +2540,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: NAME
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2631,7 +2631,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: DATEOFBIRTH
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2722,7 +2722,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: HEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2813,7 +2813,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: WEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2904,7 +2904,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: )
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2999,7 +2999,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: P
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -3094,7 +3094,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -3193,7 +3193,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: 3
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4005,13 +4005,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 17:56:30,926 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 14) Initializing Spring root WebApplicationContext
 2017-12-19 17:56:30,927 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 14) Root WebApplicationContext: initialization started
 2017-12-19 17:56:30,938 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 17:56:30 EET 2017]; root of context hierarchy
-2017-12-19 17:56:31,016 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 17:56:31,016 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 17:56:31,700 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 14) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 17:56:31,845 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 14) Root WebApplicationContext: initialization completed in 918 ms
 2017-12-19 17:56:31,876 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 14) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 17:56:31,876 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 14) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 17:56:31,881 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 17:56:31 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 17:56:31,882 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 17:56:31,882 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 14) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 17:56:32,444 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 14) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 17:56:33,166 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 14) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 17:56:33,168 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 14) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()
@@ -4049,7 +4049,7 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4144,7 +4144,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement:  required: (
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4243,7 +4243,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4334,7 +4334,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: ID_DOG
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4425,7 +4425,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: NAME
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4516,7 +4516,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: DATEOFBIRTH
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4607,7 +4607,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: HEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4698,7 +4698,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: WEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4789,7 +4789,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: )
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4884,7 +4884,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: P
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4979,7 +4979,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -5078,7 +5078,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: 3
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -5890,13 +5890,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 18:19:07,259 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 11) Initializing Spring root WebApplicationContext
 2017-12-19 18:19:07,259 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 11) Root WebApplicationContext: initialization started
 2017-12-19 18:19:07,275 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 18:19:07 EET 2017]; root of context hierarchy
-2017-12-19 18:19:07,330 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 18:19:07,330 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 18:19:07,579 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 11) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 18:19:07,661 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 11) Root WebApplicationContext: initialization completed in 402 ms
 2017-12-19 18:19:07,686 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 11) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 18:19:07,687 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 11) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 18:19:07,692 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 18:19:07 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 18:19:07,693 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 18:19:07,693 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 11) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 18:19:07,849 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 11) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 18:19:08,215 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 11) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 18:19:08,216 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 11) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()
@@ -5934,7 +5934,7 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6029,7 +6029,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement:  required: (
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6128,7 +6128,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6219,7 +6219,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: ID_DOG
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6310,7 +6310,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: NAME
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6401,7 +6401,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: DATEOFBIRTH
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6492,7 +6492,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: HEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6583,7 +6583,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: WEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6674,7 +6674,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: )
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6769,7 +6769,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: P
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6864,7 +6864,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -6963,7 +6963,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: 3
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -7826,13 +7826,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 18:41:14,775 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 23) Initializing Spring root WebApplicationContext
 2017-12-19 18:41:14,776 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 23) Root WebApplicationContext: initialization started
 2017-12-19 18:41:14,829 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 23) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 18:41:14 EET 2017]; root of context hierarchy
-2017-12-19 18:41:14,968 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 23) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 18:41:14,968 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 23) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 18:41:15,477 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 23) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 18:41:15,652 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 23) Root WebApplicationContext: initialization completed in 876 ms
 2017-12-19 18:41:15,689 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 23) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 18:41:15,690 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 23) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 18:41:15,705 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 23) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 18:41:15 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 18:41:15,708 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 23) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 18:41:15,708 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 23) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 18:41:16,185 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 23) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 18:41:16,644 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 23) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 18:41:16,658 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 23) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()
@@ -7870,7 +7870,7 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -7965,7 +7965,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement:  required: (
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8064,7 +8064,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8155,7 +8155,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: ID_DOG
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8246,7 +8246,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: NAME
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8337,7 +8337,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: DATEOFBIRTH
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8428,7 +8428,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: HEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8519,7 +8519,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: WEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8610,7 +8610,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: )
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8705,7 +8705,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: P
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8800,7 +8800,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -8899,7 +8899,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: 3
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -9762,13 +9762,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 18:58:11,991 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 12) Initializing Spring root WebApplicationContext
 2017-12-19 18:58:11,991 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 12) Root WebApplicationContext: initialization started
 2017-12-19 18:58:12,004 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 18:58:12 EET 2017]; root of context hierarchy
-2017-12-19 18:58:12,059 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 18:58:12,059 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 18:58:12,416 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 12) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 18:58:12,505 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 12) Root WebApplicationContext: initialization completed in 514 ms
 2017-12-19 18:58:12,537 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 12) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 18:58:12,537 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 12) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 18:58:12,540 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 18:58:12 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 18:58:12,541 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 18:58:12,541 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 12) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 18:58:12,965 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 12) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 18:58:13,320 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 12) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 18:58:13,322 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 12) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()
@@ -9806,7 +9806,7 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -9901,7 +9901,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement:  required: (
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10000,7 +10000,7 @@ Caused by: org.hsqldb.HsqlException: unexpected end of statement
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10091,7 +10091,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: ID_DOG
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10182,7 +10182,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: NAME
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10273,7 +10273,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: DATEOFBIRTH
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10364,7 +10364,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: HEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10455,7 +10455,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: WEIGHT
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10546,7 +10546,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: )
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10641,7 +10641,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: P
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10736,7 +10736,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: D
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -10835,7 +10835,7 @@ Caused by: org.hsqldb.HsqlException: unexpected token: 3
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:58)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at anna.klueva.util.HibernateUtil.<clinit>(HibernateUtil.java:32)
+	at anna.klueva.config.HibernateUtil.<clinit>(HibernateUtil.java:32)
 	at anna.klueva.dao.DogDAOImpl.getDogById(DogDAOImpl.java:55)
 	at anna.klueva.DogController.getDogById(DogController.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -11698,13 +11698,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 19:16:50,997 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 66) Initializing Spring root WebApplicationContext
 2017-12-19 19:16:51,000 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 66) Root WebApplicationContext: initialization started
 2017-12-19 19:16:51,094 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 66) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 19:16:51 EET 2017]; root of context hierarchy
-2017-12-19 19:16:51,258 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 66) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 19:16:51,258 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 66) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 19:16:51,827 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 66) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 19:16:52,029 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 66) Root WebApplicationContext: initialization completed in 1029 ms
 2017-12-19 19:16:52,071 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 66) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 19:16:52,071 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 66) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 19:16:52,080 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 66) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 19:16:52 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 19:16:52,080 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 66) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 19:16:52,080 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 66) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 19:16:52,529 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 66) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 19:16:53,727 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 66) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 19:16:53,728 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 66) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()
@@ -12356,13 +12356,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 19:20:54,658 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 62) Initializing Spring root WebApplicationContext
 2017-12-19 19:20:54,659 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 62) Root WebApplicationContext: initialization started
 2017-12-19 19:20:54,711 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 62) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 19:20:54 EET 2017]; root of context hierarchy
-2017-12-19 19:20:54,768 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 62) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 19:20:54,768 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 62) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 19:20:55,199 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 62) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 19:20:55,308 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 62) Root WebApplicationContext: initialization completed in 649 ms
 2017-12-19 19:20:55,349 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 62) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 19:20:55,349 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 62) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 19:20:55,353 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 62) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 19:20:55 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 19:20:55,354 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 62) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 19:20:55,354 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 62) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 19:20:55,727 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 62) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 19:20:56,143 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 62) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 19:20:56,144 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 62) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()
@@ -12907,13 +12907,13 @@ Caused by: org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(6[*],'I
 2017-12-19 19:21:05,532 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 10) Initializing Spring root WebApplicationContext
 2017-12-19 19:21:05,533 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 10) Root WebApplicationContext: initialization started
 2017-12-19 19:21:05,548 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 10) Refreshing Root WebApplicationContext: startup date [Tue Dec 19 19:21:05 EET 2017]; root of context hierarchy
-2017-12-19 19:21:05,591 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 10) Registering annotated classes: [class anna.klueva.util.RootConfig]
+2017-12-19 19:21:05,591 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 10) Registering annotated classes: [class anna.klueva.config.RootConfig]
 2017-12-19 19:21:05,825 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 10) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 19:21:05,898 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 10) Root WebApplicationContext: initialization completed in 365 ms
 2017-12-19 19:21:05,900 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 10) Initializing Spring FrameworkServlet 'dispatcher'
 2017-12-19 19:21:05,900 INFO  [org.springframework.web.servlet.DispatcherServlet] (ServerService Thread Pool -- 10) FrameworkServlet 'dispatcher': initialization started
 2017-12-19 19:21:05,906 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 10) Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Dec 19 19:21:05 EET 2017]; parent: Root WebApplicationContext
-2017-12-19 19:21:05,906 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 10) Registering annotated classes: [class anna.klueva.util.WebConfig]
+2017-12-19 19:21:05,906 INFO  [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] (ServerService Thread Pool -- 10) Registering annotated classes: [class anna.klueva.config.WebConfig]
 2017-12-19 19:21:06,062 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 10) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 2017-12-19 19:21:06,545 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 10) Mapped "{[/dog/{dogId}],methods=[GET]}" onto public anna.klueva.Dog anna.klueva.DogController.getDogById(int) throws java.sql.SQLException
 2017-12-19 19:21:06,547 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] (ServerService Thread Pool -- 10) Mapped "{[/dog],methods=[POST]}" onto public java.lang.String anna.klueva.DogController.createNewDog()

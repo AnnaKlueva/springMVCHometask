@@ -41,10 +41,7 @@ public class DogController {
     }
 
     @PutMapping(value="/{dogId}", consumes = "application/json", produces = "application/json")
-    public Dog updateDogById(@PathVariable int dogId, @RequestBody @Valid Dog dog/*, BindingResult bindingResult*/) throws SQLException {
-       /*if (bindingResult.hasErrors()) {
-           throw new RuntimeException("Invalid input object");
-       }*/
+    public Dog updateDogById(@PathVariable int dogId, @RequestBody @Valid Dog dog) throws SQLException {
        Dog result = new Dog();
        if(dogDAO.existsById(dogId)){
            Dog foundDog = dogDAO.findById(dogId).get();
