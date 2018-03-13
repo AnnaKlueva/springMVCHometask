@@ -20,7 +20,7 @@ public class DogControllerTest {
      * Dog(id=0, name=null, dateOfBirth=null, height=0.0, weight=0.0)
      * Actual   :<200 OK,Dog(id=0, name=null, dateOfBirth=null, height=0.0, weight=0.0),{}>
      */
-    @Test(enabled = false)
+    @Test(groups = "unitTest", enabled = false)
     public void testGetDogByIdMethod() throws Exception {
         Optional<Dog> expectedDog = Optional.of(new Dog());
 
@@ -31,7 +31,7 @@ public class DogControllerTest {
         assertEquals(expectedDog.get(), controller.getDogById(1));
     }
 
-    @Test
+    @Test(groups = "unitTest")
     public void testGetAllDogsMethod() throws Exception {
         Dog firstDog = Dog.builder()
                 .name("First dog")
@@ -50,7 +50,7 @@ public class DogControllerTest {
         assertEquals(expectedList, controller.getAllDogs());
     }
 
-    @Test(enabled = false)
+    @Test(groups = "unitTest", enabled = false)
     public void testDeleteDogMethod() throws Exception {
         //TODO : analyze how should we test "void" methods.Is it needed?
         Dog expectedDog = new Dog();
@@ -62,7 +62,7 @@ public class DogControllerTest {
         assertEquals(expectedDog, controller.getDogById(1));
     }
 
-    @Test
+    @Test(groups = "unitTest")
     public void testUpdateDogMethod() throws Exception {
         Dog expectedDog = new Dog();
 
@@ -73,7 +73,7 @@ public class DogControllerTest {
         assertEquals(expectedDog, controller.updateDogById(1, expectedDog));
     }
 
-    @Test
+    @Test(groups = "unitTest")
     public void testCreateDogMethod() throws Exception {
         Dog dogToBeAdded = Dog.builder()
                 .name("First dog")

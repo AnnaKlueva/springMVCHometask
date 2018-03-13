@@ -130,7 +130,7 @@ public class DogDAOTest {
      date of birth - must be before NOW, optional
      height, weight - must be greater than 0, not null
      */
-    @Test(groups = "restApi"/*, enabled = false*/)
+    @Test(groups = "restApi")
     public void verifyAddDogRequest_200Ok() throws Exception {
         Dog expectedDog = Dog.builder()
                 .name("Correct dog")
