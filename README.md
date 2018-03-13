@@ -30,6 +30,8 @@ To deploy .war file to server. you nee to start server via /bin/standalone.sh
 and then use command ``mvn wildfly:deploy``.
 To undeploy please use ``mvn wildfly:undeploy``
 
+To run system test use command : ``mvn test -Dtest=SystemTest``
+
 <h5><i>Used technologies:</i></h5>
 
  - Maven
