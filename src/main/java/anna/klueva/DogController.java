@@ -52,8 +52,16 @@ public class DogController {
     }
 
     @DeleteMapping(value="/{dogId}")
-    public void deleteDogById(@PathVariable int dogId) throws SQLException {
-        dogDAO.deleteById(dogId);
+    public ResponseEntity<String> deleteDogById(@PathVariable int dogId) throws SQLException {
+        ResponseEntity<String> response;
+        if(dogDAO.existsById(dogId)){
+            dogDAO.deleteById(dogId);
+            response = new ResponseEntity(OK);
+        }
+        else {
+            response = new ResponseEntity("Item with id="+dogId+"is not exist", NOT_FOUND);
+        }
+        return response;
     }
 
     private void setDataToDog(Dog dog, Dog foundDog) {

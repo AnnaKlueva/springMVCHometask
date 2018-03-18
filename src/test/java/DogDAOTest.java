@@ -3,6 +3,7 @@ import anna.klueva.Dog;
 import anna.klueva.DogController;
 import anna.klueva.errorHandling.RestErrorHandler;
 import anna.klueva.dao.DogDAO;
+import org.hamcrest.Matchers;
 import org.springframework.context.MessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -163,7 +164,7 @@ public class DogDAOTest {
     @Test(groups = "restApi", enabled = false)
     public void verifyAddDogRequest_400Badrequest() throws Exception {
         Dog expectedDog = Dog.builder()
-                .name("Correct dog")
+                .name("Incorrect dog")
                 .dateOfBirth(new Date())
                 .height(-25)
                 .weight(10)
@@ -182,7 +183,7 @@ public class DogDAOTest {
                 .content(TestUtil.convertObjectToJsonBytes(expectedDog)))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.fieldErrors[*].message", containsString("The height must be more then 0")));
+                .andExpect(jsonPath("$.fieldErrors[*].message[0]", containsString("The height must be more then 0")));
         verifyZeroInteractions(mockRepository);
     }
 }

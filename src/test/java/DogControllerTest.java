@@ -2,6 +2,8 @@ import anna.klueva.Dog;
 import anna.klueva.DogController;
 import anna.klueva.dao.DogDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -11,6 +13,8 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpStatus.ACCEPTED;
+import static org.springframework.http.HttpStatus.OK;
 
 public class DogControllerTest {
     @Autowired
@@ -20,15 +24,15 @@ public class DogControllerTest {
      * Dog(id=0, name=null, dateOfBirth=null, height=0.0, weight=0.0)
      * Actual   :<200 OK,Dog(id=0, name=null, dateOfBirth=null, height=0.0, weight=0.0),{}>
      */
-    @Test(groups = "unitTest", enabled = false)
+    @Test(groups = "unitTest")
     public void testGetDogByIdMethod() throws Exception {
-        Optional<Dog> expectedDog = Optional.of(new Dog());
+        Dog expectedDog = Dog.builder().name("Test dog").build();
 
         DogDAO mockRepository = mock(DogDAO.class);
-        when(mockRepository.findById(1)).thenReturn(expectedDog);
+        when(mockRepository.findById(1)).thenReturn(Optional.of(expectedDog));
 
         DogController controller = new DogController(mockRepository);
-        assertEquals(expectedDog.get(), controller.getDogById(1));
+        assertEquals(new ResponseEntity(expectedDog, OK), controller.getDogById(1));
     }
 
     @Test(groups = "unitTest")
@@ -52,14 +56,13 @@ public class DogControllerTest {
 
     @Test(groups = "unitTest", enabled = false)
     public void testDeleteDogMethod() throws Exception {
-        //TODO : analyze how should we test "void" methods.Is it needed?
         Dog expectedDog = new Dog();
 
         DogDAO mockRepository = mock(DogDAO.class);
-        //when(mockRepository.deleteById(1)).thenReturn(null);
+       // when(mockRepository.deleteById(1)).thenReturn(new ResponseEntity(HttpStatus.OK));
 
         DogController controller = new DogController(mockRepository);
-        assertEquals(expectedDog, controller.getDogById(1));
+        assertEquals(expectedDog, controller.deleteDogById(1));
     }
 
     @Test(groups = "unitTest")

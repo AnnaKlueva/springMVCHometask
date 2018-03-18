@@ -1,6 +1,8 @@
 import anna.klueva.Dog;
 import anna.klueva.config.RootConfig;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
 import org.springframework.test.context.ActiveProfiles;
@@ -17,9 +19,7 @@ import static io.restassured.RestAssured.given;
  * Created by akliuieva on 1/5/18.
  */
 
-@ContextConfiguration(classes={RootConfig.class})
-@ActiveProfiles("test")
-public class SystemTest extends AbstractTestNGSpringContextTests {
+public class SystemTest {
     public static final String PATH_TO_JBOSS_WAR = "/Users/akliuieva/Desktop/WebAppProject/WebApp/src/test/resources/wildfly-11.0.0.Final/bin/standalone.sh";
     public static final String BASE_URI = "http://localhost:8080/WebApp-1.1/dog/";
 
@@ -50,12 +50,11 @@ public class SystemTest extends AbstractTestNGSpringContextTests {
                 actualDog, arrayOfDogs[0]);
     }
 
-    //TODO: understand why date is incorrect
     @Test(groups = "systemTest")
     public void verifyCreateDogRequest() throws Exception {
         Dog expectedDog = Dog.builder()
-                .name(createUniqueName())
-                .dateOfBirth(new Date())
+                .name(TestUtil.createUniqueName())
+                .dateOfBirth(TestUtil.getDateWithoutTime(new Date()))
                 .height(35.0)
                 .weight(23)
                 .build();
@@ -94,14 +93,14 @@ public class SystemTest extends AbstractTestNGSpringContextTests {
 
         Assert.assertEquals("Dog table quantity was not increased",
                 initialDogTableSize + 1, arrayOfDogWithAddedItemSize);
-        Assert.assertEquals("Create request is working incorrectly",
-                arrayOfDogWithAddedItem[arrayOfDogWithAddedItemSize-1], createdDog);
+        Assert.assertEquals("Create request is working incorrectly", createdDog,
+                arrayOfDogWithAddedItem[arrayOfDogWithAddedItemSize-1]);
     }
 
     @Test(groups = "systemTest")
     public void verifyUpdateRequest() throws Exception {
         Dog expectedDog = Dog.builder()
-                .name(createUniqueName())
+                .name(TestUtil.createUniqueName())
                 .dateOfBirth(new Date())
                 .height(35.0)
                 .weight(23)
@@ -148,7 +147,7 @@ public class SystemTest extends AbstractTestNGSpringContextTests {
     @Test(groups = "systemTest")
     public void verifyDeleteRequest() throws Exception {
         Dog expectedDog = Dog.builder()
-                .name(createUniqueName())
+                .name(TestUtil.createUniqueName())
                 .dateOfBirth(new Date())
                 .height(35.0)
                 .weight(23)
@@ -197,9 +196,110 @@ public class SystemTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test(groups = "systemTest")
+    public void verifyGetRequest404Response() throws Exception {
+        Dog expectedDog = Dog.builder()
+                .name("SystemTest" + TestUtil.createUniqueName())
+                .dateOfBirth(TestUtil.getDateWithoutTime(new Date()))
+                .height(65)
+                .weight(40).build();
+
+        Dog createdDog = given().baseUri(BASE_URI)
+                .accept(ContentType.JSON)
+                .accept("application/json")
+                .contentType(ContentType.JSON)
+                .body(expectedDog)
+                .when()
+                .post()
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().body().as(Dog.class);
+
+        given().baseUri(BASE_URI + createdDog.getId())
+                .when()
+                .delete()
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK);
+
+        given().baseUri(BASE_URI + createdDog.getId())
+                .when()
+                .get()
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_NOT_FOUND);
+    }
+
+    @Test(groups = "systemTest")
+    public void verifyCreateIncorrectItem() throws Exception {
+        Dog expectedDog = Dog.builder()
+                .name("")
+                .dateOfBirth(TestUtil.getDateWithoutTime(new Date()))
+                .height(65)
+                .weight(40).build();
+
+        ValidatableResponse actualDog = given().baseUri(BASE_URI)
+                .accept(ContentType.JSON)
+                .accept("application/json")
+                .contentType(ContentType.JSON)
+                .body(expectedDog)
+                .when()
+                .post()
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_BAD_REQUEST);
+
+        Assert.assertTrue("Error message for name is incorrect",
+                actualDog.extract()
+                        .body()
+                        .jsonPath()
+                        .get("fieldErrors.message")
+                        .toString()
+                        .contains("The name '' must be between 1 and 100 characters long"));
+    }
+
+    //TODO: what happen if user tries to delete unexisting item?
+    @Test(groups = "systemTest")
+    public void verifyDeleteNotExistingItem() throws Exception {
+        Dog expectedDog = Dog.builder()
+                .name("SystemTest" + TestUtil.createUniqueName())
+                .dateOfBirth(TestUtil.getDateWithoutTime(new Date()))
+                .height(65)
+                .weight(40).build();
+
+        Dog createdDog = given().baseUri(BASE_URI)
+                .accept(ContentType.JSON)
+                .accept("application/json")
+                .contentType(ContentType.JSON)
+                .body(expectedDog)
+                .when()
+                .post()
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().body().as(Dog.class);
+
+        given().baseUri(BASE_URI + createdDog.getId())
+                .when()
+                .delete()
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK);
+
+        given().baseUri(BASE_URI + createdDog.getId())
+                .when()
+                .delete()
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK);
+    }
+
+
+
+    @Test(groups = "systemTest")
     public void verifySystemRequest() throws Exception {
         Dog expectedDog = Dog.builder()
-                .name(createUniqueName())
+                .name(TestUtil.createUniqueName())
                 .dateOfBirth(new Date())
                 .height(35.0)
                 .weight(23)
@@ -276,9 +376,6 @@ public class SystemTest extends AbstractTestNGSpringContextTests {
 
         Assert.assertEquals("Delete request works incorrectly", arrayOfDogSizeAfterDeletingDog, initialDogTableSize );
     }
-
-    private String createUniqueName() {
-        return "Dog" + (new Date()).getTime();
-    }
+    
 }
 

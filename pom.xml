@@ -199,7 +199,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.21.0</version>
                 <configuration>
-                    <groups>unitTest,restApi</groups>
+                    <groups>unitTest,restApi,dbTest</groups>
                 </configuration>
             </plugin>
 

@@ -42,16 +42,10 @@ public class RestErrorHandler {
         ValidationErrorDTO dto = new ValidationErrorDTO();
 
         for (FieldError fieldError: fieldErrors) {
-            String localizedErrorMessage = resolveLocalizedErrorMessage(fieldError);
-            dto.addFieldError(fieldError.getField(), localizedErrorMessage);
+            //String localizedErrorMessage = resolveLocalizedErrorMessage(fieldError);
+            dto.addFieldError(fieldError.getField(), fieldError.getDefaultMessage());
         }
 
         return dto;
-    }
-
-    private String resolveLocalizedErrorMessage(FieldError fieldError) {
-        Locale currentLocale =  LocaleContextHolder.getLocale();
-        String localizedErrorMessage = messageSource.getMessage(fieldError, currentLocale);
-        return localizedErrorMessage;
     }
 }

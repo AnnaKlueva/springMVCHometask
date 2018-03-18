@@ -1,7 +1,6 @@
 package anna.klueva;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,20 +11,17 @@ import javax.validation.constraints.Size;
 
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@JsonRootName(value = "dog")
 @Entity
 @Table(name = "DOGTABLE")
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 @Getter
+@Setter
 @Data
 public class Dog implements Serializable {
 
@@ -44,8 +40,8 @@ public class Dog implements Serializable {
     private String name;
 
     @Past(message = "Must be a past date")
-    @Temporal(TemporalType.DATE)
-    /*@JsonFormat(pattern="yyyy-MM-dd")*/
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dateOfBirth")
     private Date dateOfBirth;
 
