@@ -65,7 +65,6 @@ public class DogDAOTest {
         MockMvc mockMvc = standaloneSetup(controller).build();
 
         mockMvc.perform(get("/dog/100"))
-                .andDo(print())
                 .andExpect(status().isNotFound());
     }
 
@@ -125,7 +124,6 @@ public class DogDAOTest {
         mockMvc.perform(post("/dog/")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(expectedDog)))
-                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType
                         (MediaType.APPLICATION_JSON_UTF8_VALUE))

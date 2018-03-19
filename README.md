@@ -1,5 +1,6 @@
 ## **Training task for Spring MVC, Spring data JPA, Hibernate** ##
-####**TASK DEFINITION**####
+#### **TASK DEFINITION** ####
+
 Create an app that has CRUD (create/read/update/delete) operations implemented for object called Dog via REST.<br>
 _Properties of a dog:_
 
@@ -23,8 +24,8 @@ _Properties of a dog:_
 
 <h6><i>Note:</i></h6> All tests should be executed as a part of CI/CD pipeline through Jenkins
 
-###How to:###
--------------
+How to:
+-------
 To create .war file and run unit test use command: ``mvn clean install``
 
 To run system test you need to deploy .war file on server and then use command : ``mvn test -Dtest=SystemTest``
