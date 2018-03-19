@@ -4,7 +4,6 @@ import anna.klueva.dao.DogDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -41,12 +40,15 @@ public class DogController {
     }
 
     @PutMapping(value="/{dogId}", consumes = "application/json", produces = "application/json")
-    public Dog updateDogById(@PathVariable int dogId, @RequestBody @Valid Dog dog) throws SQLException {
-       Dog result = new Dog();
+    public ResponseEntity<Dog> updateDogById(@PathVariable int dogId, @RequestBody @Valid Dog dog) throws SQLException {
+       ResponseEntity<Dog> result;
        if(dogDAO.existsById(dogId)){
            Dog foundDog = dogDAO.findById(dogId).get();
            setDataToDog(dog, foundDog);
-           result = dogDAO.save(foundDog);
+           result = new ResponseEntity<>(dogDAO.save(foundDog), OK);
+       }
+       else{
+           result = new ResponseEntity<>( NOT_FOUND );
        }
        return result;
     }
@@ -56,10 +58,10 @@ public class DogController {
         ResponseEntity<String> response;
         if(dogDAO.existsById(dogId)){
             dogDAO.deleteById(dogId);
-            response = new ResponseEntity(OK);
+            response = new ResponseEntity<>(OK);
         }
         else {
-            response = new ResponseEntity("Item with id="+dogId+"is not exist", NOT_FOUND);
+            response = new ResponseEntity<>("Item with id="+dogId+" is not exist", NOT_FOUND);
         }
         return response;
     }

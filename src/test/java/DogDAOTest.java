@@ -1,16 +1,12 @@
-
 import anna.klueva.Dog;
 import anna.klueva.DogController;
-import anna.klueva.errorHandling.RestErrorHandler;
 import anna.klueva.dao.DogDAO;
-import org.hamcrest.Matchers;
+import anna.klueva.errorHandling.RestErrorHandler;
 import org.springframework.context.MessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
@@ -18,29 +14,17 @@ import java.util.Optional;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 /**
- * Created by akliuieva on 12/21/17.
+ * Link with examples:
+ * https://www.petrikainulainen.net/programming/spring-framework/unit-testing-of-spring-mvc-controllers-rest-api
  */
 public class DogDAOTest {
-
-    public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
-            MediaType.APPLICATION_JSON.getSubtype(),
-            Charset.forName("utf8")
-    );
-
-    /**Link with examples:
-     * https://www.petrikainulainen.net/programming/spring-framework/unit-testing-of-spring-mvc-controllers-rest-api
-     * */
 
     @Test(groups = "restApi")
     public void verifyGetByIdRequestOkResponse() throws Exception {
@@ -61,8 +45,7 @@ public class DogDAOTest {
 
         mockMvc.perform(get("/dog/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
-                .andDo(print())
+                .andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.id", is(expectedDog.get().getId())))
                 .andExpect(jsonPath("$.name", is(expectedDog.get().getName())))
                 .andExpect(jsonPath("$.height", is(expectedDog.get().getHeight())))
@@ -81,7 +64,7 @@ public class DogDAOTest {
         DogController controller = new DogController(mockRepository);
         MockMvc mockMvc = standaloneSetup(controller).build();
 
-        ResultActions result = mockMvc.perform(get("/dog/100"))
+        mockMvc.perform(get("/dog/100"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
@@ -105,16 +88,15 @@ public class DogDAOTest {
 
         MockMvc mockMvc = standaloneSetup(controller).build();
 
-        ResultActions result = mockMvc.perform(get("/dog/allDogs"))
+        mockMvc.perform(get("/dog/allDogs"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id", is(firstDog.getId())))
                 .andExpect(jsonPath("$[0].name", is(firstDog.getName())))
                 .andExpect(jsonPath("$[0].height", is(firstDog.getHeight())))
                 .andExpect(jsonPath("$[0].weight", is(firstDog.getWeight())))
-        //TODO: investigate why dateOfBirth is not converted in date object
-        //  .andExpect(jsonPath("$.dateOfBirth", is(expectedDog.get().getDateOfBirth())));
+                .andExpect(jsonPath("$[0].dateOfBirth", is(firstDog.getDateOfBirth().getTime())))
                 .andExpect(jsonPath("$[1].id", is(secondDog.getId())))
                 .andExpect(jsonPath("$[1].name", is(secondDog.getName())))
                 .andExpect(jsonPath("$[1].height", is(secondDog.getHeight())))
@@ -124,13 +106,6 @@ public class DogDAOTest {
         verifyNoMoreInteractions(mockRepository);
     }
 
-    //TODO: add verifications for valid object
-    /**
-     * id - not null, unique, auto generate
-     * name - 1-100 symbols, not null
-     date of birth - must be before NOW, optional
-     height, weight - must be greater than 0, not null
-     */
     @Test(groups = "restApi")
     public void verifyAddDogRequest_200Ok() throws Exception {
         Dog expectedDog = Dog.builder()
@@ -147,8 +122,8 @@ public class DogDAOTest {
 
         MockMvc mockMvc = standaloneSetup(controller).build();
 
-        ResultActions result = mockMvc.perform(post("/dog/")
-                .contentType(APPLICATION_JSON_UTF8)
+        mockMvc.perform(post("/dog/")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(expectedDog)))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -161,8 +136,8 @@ public class DogDAOTest {
                 .andExpect(jsonPath("$.dateOfBirth", is(expectedDog.getDateOfBirth().getTime())));
     }
 
-    @Test(groups = "restApi", enabled = false)
-    public void verifyAddDogRequest_400Badrequest() throws Exception {
+    @Test(groups = "restApi")
+    public void verifyAddDogRequest_404BadRequest() throws Exception {
         Dog expectedDog = Dog.builder()
                 .name("Incorrect dog")
                 .dateOfBirth(new Date())
@@ -178,12 +153,118 @@ public class DogDAOTest {
                 .setControllerAdvice(new RestErrorHandler(mock(MessageSource.class)))
                 .build();
 
-        ResultActions result = mockMvc.perform(post("/dog/")
-                .contentType(APPLICATION_JSON_UTF8)
+        mockMvc.perform(post("/dog/")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(expectedDog)))
-                .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.fieldErrors[*].message[0]", containsString("The height must be more then 0")));
+                .andExpect(jsonPath("$.fieldErrors[0].message", containsString("The height must be more then 0")));
         verifyZeroInteractions(mockRepository);
+    }
+
+    @Test(groups = "restApi")
+    public void verifyUpdateRequest_200Ok() throws Exception {
+        Dog expectedDog = Dog.builder()
+                .name("Correct dog")
+                .dateOfBirth(new Date())
+                .height(25)
+                .weight(10)
+                .build();
+
+        Dog updatedDog = Dog.builder()
+                .name("Updated dog")
+                .dateOfBirth(new Date())
+                .height(15)
+                .weight(5)
+                .build();
+
+        DogDAO mockRepository = mock(DogDAO.class);
+        when(mockRepository.existsById(1)).thenReturn(true);
+        when(mockRepository.findById(1)).thenReturn(Optional.of(expectedDog));
+        when(mockRepository.save(updatedDog)).thenReturn(updatedDog);
+
+        DogController controller = new DogController(mockRepository);
+
+        MockMvc mockMvc = standaloneSetup(controller).build();
+
+        mockMvc.perform(put("/dog/1")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(updatedDog)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType
+                        (MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id", is(expectedDog.getId())))
+                .andExpect(jsonPath("$.name", is(updatedDog.getName())))
+                .andExpect(jsonPath("$.height", is(updatedDog.getHeight())))
+                .andExpect(jsonPath("$.weight", is(updatedDog.getWeight())))
+                .andExpect(jsonPath("$.dateOfBirth", is(updatedDog.getDateOfBirth().getTime())));
+    }
+
+    @Test(groups = "restApi")
+    public void verifyUpdateRequest_404NotFound() throws Exception {
+        Dog expectedDog = Dog.builder()
+                .name("Correct dog")
+                .dateOfBirth(new Date())
+                .height(25)
+                .weight(10)
+                .build();
+
+        DogDAO mockRepository = mock(DogDAO.class);
+        when(mockRepository.existsById(1)).thenReturn(false);
+
+        DogController controller = new DogController(mockRepository);
+
+        MockMvc mockMvc = standaloneSetup(controller).build();
+
+        mockMvc.perform(put("/dog/1")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(expectedDog)))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test(groups = "restApi")
+    public void verifyDeleteRequest_200Ok() throws Exception {
+        DogDAO mockRepository = mock(DogDAO.class);
+        when(mockRepository.existsById(1)).thenReturn(true);
+        doNothing().when(mockRepository).deleteById(1);
+
+        DogController controller = new DogController(mockRepository);
+
+        MockMvc mockMvc = standaloneSetup(controller).build();
+
+        mockMvc.perform(delete("/dog/1"))
+                .andExpect(status().isOk());
+    }
+
+    @Test(groups = "restApi")
+    public void verifyDeleteRequest_400NotFound() throws Exception {
+        Dog expectedDog = new Dog();
+
+        DogDAO mockRepository = mock(DogDAO.class);
+        when(mockRepository.existsById(1)).thenReturn(false);
+
+        DogController controller = new DogController(mockRepository);
+
+        MockMvc mockMvc = standaloneSetup(controller).build();
+
+        mockMvc.perform(delete("/dog/1")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(expectedDog)))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test(groups = "restApi")
+    public void verifyFindAll_EmptyDB() throws Exception {
+        Iterable<Dog> expectedList = Arrays.asList();
+
+        DogDAO mockRepository = mock(DogDAO.class);
+        when(mockRepository.findAll()).thenReturn(expectedList);
+        DogController controller = new DogController(mockRepository);
+
+        MockMvc mockMvc = standaloneSetup(controller).build();
+
+        mockMvc.perform(get("/dog/allDogs"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 }

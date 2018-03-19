@@ -3,9 +3,6 @@ package anna.klueva.errorHandling;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by akliuieva on 2/15/18.
- */
 public class ValidationErrorDTO {
 
     private List<FieldErrorDTO> fieldErrors = new ArrayList<>();

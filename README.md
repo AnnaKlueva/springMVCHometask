@@ -18,19 +18,26 @@ _Properties of a dog:_
 
  - Unit tests to test validation
  - DAO tests to test how the entities are saved into DB (HSQLDB can be instantiated during test start)
- - Component REST tests - use TestFramework
+ - Component REST tests
  - System REST tests - run against fully deployed app, send actual HTTP requests
 
 <h6><i>Note:</i></h6> All tests should be executed as a part of CI/CD pipeline through Jenkins
 
 ###How to:###
 -------------
+To create .war file and run unit test use command: ``mvn clean install``
 
-To deploy .war file to server. you nee to start server via /bin/standalone.sh
-and then use command ``mvn wildfly:deploy``.
-To undeploy please use ``mvn wildfly:undeploy``
+To run system test you need to deploy .war file on server and then use command : ``mvn test -Dtest=SystemTest``
 
-To run system test use command : ``mvn test -Dtest=SystemTest``
+To deploy .war file you need:
+1) download JBOSS server(wildfly 11.0.0.Final) and unzip
+2) configure local JBosss server in IntelliJ Idea(Run/Debug Configurations -> "+" -> JBoss Server -> Local)
+3) in created Jboss runner please select "Server tab"
+ - add URL(e.g. "http://localhost:8080/") and VM options "-Dspring.profiles.active=test"
+4) Select "Deployment" tad and add .war file 
+5) Select "Startup/Connection" tab and in Start script enter "path_to_your_wildfly/bin/standalone.sh"
+6) Don't forget save all changes =)
+7) Select Jboss runner and press "Run" button. The default browser with localhost url should open. 
 
 <h5><i>Used technologies:</i></h5>
 
@@ -41,24 +48,5 @@ To run system test use command : ``mvn test -Dtest=SystemTest``
  - Spring data JPA
  - Version control: Git, GitHub
  - Testing: TestNG, RestAssured, MockMVC, Mockito
- - CI/CD: Jenkins
- 
-**TODO:**
----------
-  
-  
- Points       | Done ?        
-------------- |------ 
-Use Spring DAO instead of try&catch construction in DogDAOImpl.class| Yes
-Switch on validation via Spring Validator(Hibernate validator)| Yes
-Create mechanism for switching between two DB| Yes. Needs review
-Create unit tests|No
-Create integration tests for controller methods |No
-Create integration tests for DB |No
-Create system tests |No
-Run all tests on Jenkins |No
-Remove unused constructions |No
-Remove dependencies on strict system path for embedded url prop| No
-Create drop sql script| Yes
-Investigate how to run system test(firesave plugin)|No
+ - CI/CD: Jenkins, Travis CI
  

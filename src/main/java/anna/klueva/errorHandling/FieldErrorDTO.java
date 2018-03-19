@@ -1,8 +1,5 @@
 package anna.klueva.errorHandling;
 
-/**
- * Created by akliuieva on 2/15/18.
- */
 public class FieldErrorDTO {
 
     private String field;

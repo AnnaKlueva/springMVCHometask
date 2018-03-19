@@ -1,7 +1,6 @@
 import anna.klueva.Dog;
 import anna.klueva.DogController;
 import anna.klueva.dao.DogDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.testng.annotations.Test;
@@ -11,19 +10,11 @@ import java.util.Date;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.springframework.http.HttpStatus.ACCEPTED;
+import static org.mockito.Mockito.*;
 import static org.springframework.http.HttpStatus.OK;
 
 public class DogControllerTest {
-    @Autowired
-    private DogDAO dogDAO;
 
-    /**Failed with the next exception:
-     * Dog(id=0, name=null, dateOfBirth=null, height=0.0, weight=0.0)
-     * Actual   :<200 OK,Dog(id=0, name=null, dateOfBirth=null, height=0.0, weight=0.0),{}>
-     */
     @Test(groups = "unitTest")
     public void testGetDogByIdMethod() throws Exception {
         Dog expectedDog = Dog.builder().name("Test dog").build();
@@ -32,7 +23,7 @@ public class DogControllerTest {
         when(mockRepository.findById(1)).thenReturn(Optional.of(expectedDog));
 
         DogController controller = new DogController(mockRepository);
-        assertEquals(new ResponseEntity(expectedDog, OK), controller.getDogById(1));
+        assertEquals(new ResponseEntity<>(expectedDog, OK), controller.getDogById(1));
     }
 
     @Test(groups = "unitTest")
@@ -54,15 +45,14 @@ public class DogControllerTest {
         assertEquals(expectedList, controller.getAllDogs());
     }
 
-    @Test(groups = "unitTest", enabled = false)
+    @Test(groups = "unitTest")
     public void testDeleteDogMethod() throws Exception {
-        Dog expectedDog = new Dog();
-
         DogDAO mockRepository = mock(DogDAO.class);
-       // when(mockRepository.deleteById(1)).thenReturn(new ResponseEntity(HttpStatus.OK));
+        doNothing().when(mockRepository).deleteById(1);
+        doReturn(true).when(mockRepository).existsById(1);
 
         DogController controller = new DogController(mockRepository);
-        assertEquals(expectedDog, controller.deleteDogById(1));
+        assertEquals(new ResponseEntity(HttpStatus.OK), controller.deleteDogById(1));
     }
 
     @Test(groups = "unitTest")
@@ -70,10 +60,12 @@ public class DogControllerTest {
         Dog expectedDog = new Dog();
 
         DogDAO mockRepository = mock(DogDAO.class);
+        doReturn(true).when(mockRepository).existsById(1);
+        when(mockRepository.findById(1)).thenReturn(Optional.of(expectedDog));
         when(mockRepository.save(expectedDog)).thenReturn(expectedDog);
 
         DogController controller = new DogController(mockRepository);
-        assertEquals(expectedDog, controller.updateDogById(1, expectedDog));
+        assertEquals(new ResponseEntity<>(new Dog(), OK), controller.updateDogById(1, expectedDog));
     }
 
     @Test(groups = "unitTest")
