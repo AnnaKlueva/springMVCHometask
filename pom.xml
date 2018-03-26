@@ -223,7 +223,6 @@
                     <groups>unitTest,restApi,dbTest</groups>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>

@@ -28,13 +28,13 @@ How to:
 -------
 To create .war file and run unit test use command: ``mvn clean install``
 
-To run system test you need to deploy .war file on server and then use command : ``mvn test -Dtest=SystemTest``
+To run system test you need to deploy .war file on server and then use command : ``mvn test -Dgroups=systemTest``
 
 To deploy .war file you need:
 1) download JBOSS server(wildfly 11.0.0.Final) and unzip
 2) configure local JBosss server in IntelliJ Idea(Run/Debug Configurations -> "+" -> JBoss Server -> Local)
 3) in created Jboss runner please select "Server tab"
- - add URL(e.g. "http://localhost:8080/") and VM options "-Dspring.profiles.active=test"
+ - add URL("http://localhost:8080/")
 4) Select "Deployment" tad and add .war file 
 5) Select "Startup/Connection" tab and in Start script enter "path_to_your_wildfly/bin/standalone.sh"
 6) Don't forget save all changes =)
