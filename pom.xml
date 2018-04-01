@@ -16,6 +16,7 @@
         <spring.version>5.0.2.RELEASE</spring.version>
         <servlet.version>3.0.1</servlet.version>
         <hsqldb.version>2.3.2</hsqldb.version>
+        <groups>unitTest,restApi,dbTest</groups>
     </properties>
 
     <dependencies>
@@ -60,6 +61,13 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.2</version>
         </dependency>
 
         <!-- Hibernate-core -->
@@ -208,7 +216,7 @@
                 <version>1.2.1.Final</version>
                 <configuration>
                     <hostname>127.0.0.1</hostname>
-                    <port>9990</port>
+                    <port>9995</port>
                     <username></username>
                     <password></password>
                     <name>WebApp-1.1.war</name>
@@ -220,7 +228,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.21.0</version>
                 <configuration>
-                    <groups>unitTest,restApi,dbTest</groups>
+                    <groups>${groups}</groups>
                 </configuration>
             </plugin>
         </plugins>
